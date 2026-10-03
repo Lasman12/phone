@@ -345,3 +345,25 @@ svg { fill: currentColor; }
 .ph-nav svg { width: 24px; height: 24px; }
 .ph-nav.prev { left: 8px; }
 .ph-nav.next { right: 8px; transform: scaleX(-1); }
+
+/* ===================== משחקים ===================== */
+.game-canvas { flex: 1; min-height: 0; width: 100%; display: block; touch-action: none; cursor: pointer; }
+
+.sn { color: #fff; background: #578a34; }
+.sn-top { display: flex; justify-content: space-between; padding: 8px 20px 10px; font-size: 20px; font-weight: 700; flex: none; }
+.sn-board-wrap { padding: 0 14px; flex: none; }
+.sn-board { width: 100%; aspect-ratio: 1; display: block; border-radius: 8px; box-shadow: 0 6px 18px rgba(0, 0, 0, .3); }
+.sn-pad {
+  flex: 1; min-height: 0; display: grid; place-content: center; gap: 6px; padding-bottom: var(--home-h);
+  grid-template: 'a u b' 64px 'l c r' 64px 'e d f' 64px / 64px 64px 64px;
+}
+.sn-btn { border-radius: 16px; background: rgba(255, 255, 255, .18); display: grid; place-items: center; touch-action: none; }
+.sn-btn:active { background: rgba(255, 255, 255, .35); }
+.sn-btn svg { width: 30px; height: 30px; }
+.sn-btn.up { grid-area: u; }
+.sn-btn.down { grid-area: d; }
+.sn-btn.down svg { transform: rotate(180deg); }
+.sn-btn.left { grid-area: l; }
+.sn-btn.left svg { transform: rotate(-90deg); }
+.sn-btn.right { grid-area: r; }
+.sn-btn.right svg { transform: rotate(90deg); }
