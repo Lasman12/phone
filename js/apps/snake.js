@@ -36,10 +36,10 @@
       let snake, dir, queue, food, score, best = store.get('snake:best', 0), state, timer, size = 300;
 
       function resize() {
-        const rect = canvas.getBoundingClientRect();
         const dpr = window.devicePixelRatio || 1;
-        size = rect.width;
-        canvas.width = canvas.height = size * dpr;
+        size = canvas.clientWidth;
+        if (!size) return;
+        canvas.width = canvas.height = Math.round(size * dpr);
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         draw();
       }

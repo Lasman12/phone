@@ -347,7 +347,8 @@ svg { fill: currentColor; }
 .ph-nav.next { right: 8px; transform: scaleX(-1); }
 
 /* ===================== משחקים ===================== */
-.game-canvas { flex: 1; min-height: 0; width: 100%; display: block; touch-action: none; cursor: pointer; }
+.game-wrap { flex: 1; min-height: 0; position: relative; }
+.game-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; cursor: pointer; }
 
 .sn { color: #fff; background: #578a34; }
 .sn-top { display: flex; justify-content: space-between; padding: 8px 20px 10px; font-size: 20px; font-weight: 700; flex: none; }

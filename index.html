@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=2">
 </head>
 <body>
   <div class="device">
@@ -37,17 +37,28 @@
     </div>
   </div>
 
-  <script src="js/core.js"></script>
+  <script src="js/core.js?v=2"></script>
   <!-- כל אפליקציה בקובץ משלה. אפליקציה חדשה = קובץ חדש + שורה כאן -->
-  <script src="js/apps/whatsapp.js"></script>
-  <script src="js/apps/youtube.js"></script>
-  <script src="js/apps/music.js"></script>
-  <script src="js/apps/contacts.js"></script>
-  <script src="js/apps/google.js"></script>
-  <script src="js/apps/notes.js"></script>
-  <script src="js/apps/photos.js"></script>
-  <script src="js/apps/flappy.js"></script>
-  <script src="js/apps/snake.js"></script>
-  <script>Phone.start();</script>
+  <script src="js/apps/whatsapp.js?v=2"></script>
+  <script src="js/apps/youtube.js?v=2"></script>
+  <script src="js/apps/music.js?v=2"></script>
+  <script src="js/apps/contacts.js?v=2"></script>
+  <script src="js/apps/google.js?v=2"></script>
+  <script src="js/apps/notes.js?v=2"></script>
+  <script src="js/apps/photos.js?v=2"></script>
+  <script src="js/apps/flappy.js?v=2"></script>
+  <script src="js/apps/snake.js?v=2"></script>
+  <script>
+    Phone.start();
+    // אם יצאה גרסה חדשה של האתר — טוענים אותה מיד (במקום לחכות שהזיכרון של הדפדפן יתרוקן)
+    const SITE_VERSION = '2';
+    fetch('version.txt?t=' + Date.now(), { cache: 'no-store' })
+      .then(r => r.text())
+      .then(v => {
+        v = v.trim();
+        if (v && v !== SITE_VERSION && !location.search.includes('v=' + v)) location.replace(location.pathname + '?v=' + v);
+      })
+      .catch(() => {});
+  </script>
 </body>
 </html>

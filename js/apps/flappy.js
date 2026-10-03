@@ -18,19 +18,22 @@
 
     open(root) {
       const canvas = h('canvas', { class: 'game-canvas' });
-      root.replaceChildren(h('div', { class: 'view' }, canvas));
+      const wrap = h('div', { class: 'game-wrap' }, canvas);
+      root.replaceChildren(h('div', { class: 'view' }, wrap));
       const ctx = canvas.getContext('2d');
 
       let scale = 1, H = 640;
       let state = 'ready', bird, pipes, score, best = store.get('flappy:best', 0), spawn, groundX = 0, t = 0;
 
       function resize() {
-        const rect = canvas.getBoundingClientRect();
+        // clientWidth לא מושפע מאנימציית הפתיחה של האפליקציה
+        const w = wrap.clientWidth, hgt = wrap.clientHeight;
+        if (!w || !hgt) return;
         const dpr = window.devicePixelRatio || 1;
-        canvas.width = rect.width * dpr;
-        canvas.height = rect.height * dpr;
-        scale = rect.width / W;
-        H = rect.height / scale;
+        canvas.width = Math.round(w * dpr);
+        canvas.height = Math.round(hgt * dpr);
+        scale = w / W;
+        H = hgt / scale;
         ctx.setTransform(scale * dpr, 0, 0, scale * dpr, 0, 0);
       }
 
@@ -206,7 +209,7 @@
       canvas.addEventListener('pointerdown', e => { e.preventDefault(); flap(); });
       document.addEventListener('keydown', onKey);
       const ro = new ResizeObserver(() => { resize(); if (state === 'ready') reset(); });
-      ro.observe(canvas);
+      ro.observe(wrap);
 
       resize();
       reset();
