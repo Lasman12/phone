@@ -368,3 +368,47 @@ svg { fill: currentColor; }
 .sn-btn.left svg { transform: rotate(-90deg); }
 .sn-btn.right { grid-area: r; }
 .sn-btn.right svg { transform: rotate(90deg); }
+
+/* ===================== Tony (AI) ===================== */
+.ty { color: #e8e9ee; }
+.ty-header { display: flex; align-items: center; gap: 10px; padding: 6px 8px 10px 14px; border-bottom: 1px solid #1e2130; flex: none; }
+.ty-avatar, .ty-mini, .ty-big { display: grid; place-items: center; border-radius: 50%; background: linear-gradient(150deg, #7b5cff, #2bd2ff); color: #fff; flex: none; }
+.ty-avatar { width: 38px; height: 38px; }
+.ty-avatar svg { width: 24px; height: 24px; }
+.ty-head-text { flex: 1; }
+.ty-name { font-size: 17px; font-weight: 600; }
+.ty-sub { font-size: 12px; color: #8b90a5; }
+.ty-body { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.ty-messages { flex: 1; min-height: 0; overflow-y: auto; padding: 14px 12px; display: flex; flex-direction: column; gap: 12px; scrollbar-width: none; }
+.ty-msg { display: flex; gap: 8px; align-items: flex-start; max-width: 88%; }
+.ty-msg.user { align-self: flex-end; }
+.ty-msg.user .ty-text { background: #2f3550; border-radius: 18px 18px 4px 18px; padding: 9px 14px; }
+.ty-msg.assistant .ty-text { padding-top: 4px; }
+.ty-text { font-size: 15px; line-height: 1.45; white-space: pre-wrap; word-break: break-word; }
+.ty-mini { width: 26px; height: 26px; }
+.ty-mini svg { width: 17px; height: 17px; }
+.ty-typing { display: inline-flex; gap: 4px; padding: 6px 0; }
+.ty-typing i { width: 7px; height: 7px; border-radius: 50%; background: #8b90a5; animation: wa-dot 1s infinite; }
+.ty-typing i:nth-child(2) { animation-delay: .15s; }
+.ty-typing i:nth-child(3) { animation-delay: .3s; }
+.ty-inputbar { display: flex; align-items: flex-end; gap: 8px; margin: 0 10px calc(var(--home-h) + 4px); padding: 6px 6px 6px 14px; background: #1b1e2b; border-radius: 24px; flex: none; }
+.ty-input { flex: 1; border: 0; outline: 0; resize: none; background: none; color: #e8e9ee; font: inherit; font-size: 16px; line-height: 1.4; padding: 6px 0; max-height: 120px; }
+.ty-input::placeholder { color: #6d7287; }
+.ty-send { width: 36px; height: 36px; border-radius: 50%; background: #fff; color: #111; display: grid; place-items: center; flex: none; }
+.ty-send svg { width: 20px; height: 20px; }
+.ty-empty, .ty-setup { margin: auto; text-align: center; padding: 20px 26px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.ty-setup { flex: 1; justify-content: center; }
+.ty-big { width: 84px; height: 84px; box-shadow: 0 10px 40px rgba(91, 99, 255, .45); }
+.ty-big svg { width: 54px; height: 54px; }
+.ty-big.pulse { animation: ty-pulse 1.6s ease-in-out infinite; }
+@keyframes ty-pulse { 50% { transform: scale(1.08); box-shadow: 0 10px 50px rgba(43, 210, 255, .6); } }
+.ty-hello { font-size: 22px; font-weight: 700; margin-top: 6px; }
+.ty-hint, .ty-setup p { color: #a3a8bb; font-size: 14.5px; line-height: 1.45; }
+.ty-small { font-size: 12.5px !important; color: #7d8296 !important; }
+.ty-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 8px; }
+.ty-chip { border: 1px solid #2c3044; border-radius: 16px; padding: 7px 12px; font-size: 13.5px; color: #cfd2de; }
+.ty-chip:active { background: #1b1e2b; }
+.ty-start { margin-top: 8px; background: linear-gradient(150deg, #7b5cff, #2bd2ff); color: #fff; font-weight: 600; padding: 12px 30px; border-radius: 24px; font-size: 16px; }
+.ty-bar { width: 100%; height: 8px; border-radius: 4px; background: #1e2130; overflow: hidden; margin-top: 8px; }
+.ty-bar span { display: block; height: 100%; background: linear-gradient(90deg, #7b5cff, #2bd2ff); transition: width .3s; }
+.ty-pct { font-size: 13px; color: #a3a8bb; }
