@@ -16,7 +16,7 @@
     statusDark: true,
 
     open(root) {
-      const input = h('input', { class: 'gg-input', placeholder: 'חיפוש ב-Google', autocomplete: 'off' });
+      const input = h('input', { class: 'gg-input', placeholder: 'Search Google', autocomplete: 'off' });
       const historyEl = h('div', { class: 'gg-history' });
 
       function search(q, lucky) {
@@ -35,7 +35,7 @@
               h('span', { html: '<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 10.4 3.5 2-1 1.7L11 13V6h2z"/></svg>' }),
               h('span', { dir: 'auto' }, q)),
             h('button', {
-              class: 'gg-hist-x', html: icons.close, 'aria-label': 'הסרה',
+              class: 'gg-hist-x', html: icons.close, 'aria-label': 'Remove',
               onclick: () => { store.set('google:history', items.filter(x => x !== q)); renderHistory(); },
             }),
           )));
@@ -54,17 +54,17 @@
             .map(([ch, color]) => h('span', { style: { color } }, ch))),
         h('div', { class: 'gg-box' }, h('span', { class: 'gg-box-icon', html: icons.search }), input),
         h('div', { class: 'gg-buttons' },
-          h('button', { onclick: () => search(input.value) }, 'חיפוש ב-Google'),
-          h('button', { onclick: () => search(input.value, true) }, 'יותר מזל'),
+          h('button', { onclick: () => search(input.value) }, 'Search Google'),
+          h('button', { onclick: () => search(input.value, true) }, "I'm Feeling Lucky"),
         ),
         historyEl,
         h('div', { class: 'gg-shorts' },
           shortcut('YouTube', '#f00', '▶', () => Phone.openApp('youtube')),
-          shortcut('ויקיפדיה', '#555', 'W', () => openUrl('https://he.wikipedia.org')),
-          shortcut('מפות', '#34a853', '📍', () => openUrl('https://maps.google.com')),
-          shortcut('תרגום', '#4285f4', 'א', () => openUrl('https://translate.google.com')),
+          shortcut('Wikipedia', '#555', 'W', () => openUrl('https://he.wikipedia.org')),
+          shortcut('Maps', '#34a853', '📍', () => openUrl('https://maps.google.com')),
+          shortcut('Translate', '#4285f4', '文A', () => openUrl('https://translate.google.com')),
         ),
-        h('p', { class: 'gg-note' }, 'התוצאות נפתחות בלשונית חדשה'),
+        h('p', { class: 'gg-note' }, 'Results open in a new tab'),
       )));
     },
   });

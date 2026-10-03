@@ -20,7 +20,7 @@
   const allVideos = () => [...store.get('yt:added', []), ...VIDEOS];
 
   async function addFromLink(id) {
-    let video = { id, title: 'סרטון מיוטיוב', channel: 'YouTube' };
+    let video = { id, title: 'YouTube video', channel: 'YouTube' };
     try {
       const res = await fetch('https://noembed.com/embed?url=' + encodeURIComponent('https://www.youtube.com/watch?v=' + id));
       const data = await res.json();
@@ -47,13 +47,13 @@
 
       function topBar() {
         const input = h('input', {
-          class: 'yt-search', placeholder: 'חיפוש או הדבקת קישור', value: query,
+          class: 'yt-search', placeholder: 'Search or paste a link', value: query,
           onkeydown: e => { if (e.key === 'Enter') runSearch(input.value); },
         });
         return h('div', { class: 'yt-top' },
           h('button', { class: 'yt-logo', html: LOGO + '<span>YouTube</span>', onclick: () => { query = ''; homeView(); } }),
           input,
-          iconBtn(icons.search, () => runSearch(input.value), 'חיפוש'),
+          iconBtn(icons.search, () => runSearch(input.value), 'Search'),
         );
       }
 
@@ -62,7 +62,7 @@
         const m = query.match(LINK_RE);
         if (m) {
           query = '';
-          toast('טוען סרטון...');
+          toast('Loading video...');
           const video = await addFromLink(m[1]);
           watchView(video);
           return;
@@ -89,14 +89,15 @@
         const body = list.length
           ? list.map(card)
           : h('div', { class: 'yt-empty' },
-              h('p', null, `לא נמצא "${query}" ברשימה.`),
-              h('p', null, 'אפשר להדביק כאן קישור של סרטון מיוטיוב והוא ינוגן בטלפון.'),
-              h('a', { class: 'yt-ext', href: 'https://www.youtube.com/results?search_query=' + encodeURIComponent(query), target: '_blank', rel: 'noopener' }, 'לחפש ביוטיוב האמיתי ↗'),
+              h('p', null, `No results for "${query}".`),
+              h('p', null, 'Paste a YouTube link here and it will play on the phone.'),
+              h('a', { class: 'yt-ext', href: 'https://www.youtube.com/results?search_query=' + encodeURIComponent(query), target: '_blank', rel: 'noopener' }, 'Search on real YouTube ↗'),
             );
         root.replaceChildren(h('div', { class: 'view' }, topBar(), h('div', { class: 'scroll' }, body)));
       }
 
       function watchView(v) {
+        Phone.emit('media', 'youtube');
         root.replaceChildren(h('div', { class: 'view' },
           topBar(),
           h('div', { class: 'yt-player' },
