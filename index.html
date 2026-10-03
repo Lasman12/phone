@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- לא להופיע בגוגל — רק מי שיש לו קישור -->
+  <meta name="robots" content="noindex, nofollow">
+  <title>הטלפון שלי</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="device">
+    <div class="screen" id="screen">
+      <div class="island"></div>
+
+      <div class="statusbar">
+        <span id="status-time">00:00</span>
+        <span class="status-icons">
+          <svg viewBox="0 0 24 24"><path d="M2 20h3v-4H2zm5 0h3v-7H7zm5 0h3V9h-3zm5 0h3V4h-3z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 20.5 2.3 9.4a14 14 0 0 1 19.4 0z"/></svg>
+          <span class="battery"><span></span></span>
+        </span>
+      </div>
+
+      <div class="home" id="home">
+        <div class="widget">
+          <div class="widget-time" id="widget-time">00:00</div>
+          <div class="widget-date" id="widget-date"></div>
+        </div>
+        <div class="app-grid" id="app-grid"></div>
+      </div>
+
+      <button class="home-indicator" id="home-indicator" aria-label="מסך הבית"></button>
+    </div>
+  </div>
+
+  <script src="js/core.js"></script>
+  <!-- כל אפליקציה בקובץ משלה. אפליקציה חדשה = קובץ חדש + שורה כאן -->
+  <script src="js/apps/whatsapp.js"></script>
+  <script src="js/apps/youtube.js"></script>
+  <script src="js/apps/music.js"></script>
+  <script src="js/apps/contacts.js"></script>
+  <script src="js/apps/google.js"></script>
+  <script>Phone.start();</script>
+</body>
+</html>
