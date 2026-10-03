@@ -13,7 +13,7 @@
   function seedNotes() {
     return [
       { id: 'n1', t: at(0, 10, 30), text: 'Reminder\nGo to the field after lunch' },
-      { id: 'n2', t: at(0, 8, 15), text: 'Secret meeting\n9:00' },
+      { id: 'n2', t: at(0, 8, 15), text: 'Secret meeting\nAt 9:00' },
       {
         id: 'n3', t: at(1, 19, 40),
         text: 'Book list\n- Moby-Dick\n- The Great Gatsby\n- Anna Karenina\n- The Encyclopedia of Fungi\n- Advanced Chemistry for Beginners\n- The Incomplete History of Secret Organizations',
