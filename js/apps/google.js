@@ -6,6 +6,12 @@
   // גוגל לא מאפשר להציג את האתר שלו בתוך אתר אחר, לכן התוצאות נפתחות בלשונית חדשה
   const openUrl = url => window.open(url, '_blank', 'noopener');
 
+  // חיפושים שתמיד מופיעים ראשונים ואי אפשר למחוק
+  const PINNED = [
+    'how to treat a leg pain after a long run',
+    'where can i find the best book shop close ?',
+  ];
+
   Phone.registerApp({
     id: 'google',
     name: 'Google',
@@ -22,23 +28,26 @@
       function search(q, lucky) {
         q = q.trim();
         if (!q) return;
-        store.set('google:history', [q, ...store.get('google:history', []).filter(x => x !== q)].slice(0, 8));
-        renderHistory();
+        if (!PINNED.includes(q)) {
+          store.set('google:history', [q, ...store.get('google:history', []).filter(x => x !== q)].slice(0, 6));
+          renderHistory();
+        }
         openUrl('https://www.google.com/search?q=' + encodeURIComponent(q) + (lucky ? '&btnI=1' : ''));
       }
 
       function renderHistory() {
         const items = store.get('google:history', []);
-        historyEl.replaceChildren(...items.map(q =>
+        const row = (q, removable) =>
           h('div', { class: 'gg-hist-row' },
             h('button', { class: 'gg-hist-q', onclick: () => search(q) },
               h('span', { html: '<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 10.4 3.5 2-1 1.7L11 13V6h2z"/></svg>' }),
               h('span', { dir: 'auto' }, q)),
-            h('button', {
+            removable ? h('button', {
               class: 'gg-hist-x', html: icons.close, 'aria-label': 'Remove',
               onclick: () => { store.set('google:history', items.filter(x => x !== q)); renderHistory(); },
-            }),
-          )));
+            }) : null,
+          );
+        historyEl.replaceChildren(...PINNED.map(q => row(q, false)), ...items.map(q => row(q, true)));
       }
 
       const shortcut = (label, bg, letter, onclick) =>
