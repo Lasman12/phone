@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <link rel="stylesheet" href="css/style.css?v=4">
 </head>
 <body>
   <div class="device">
@@ -37,22 +37,21 @@
     </div>
   </div>
 
-  <script src="js/core.js?v=3"></script>
+  <script src="js/core.js?v=4"></script>
   <!-- כל אפליקציה בקובץ משלה. אפליקציה חדשה = קובץ חדש + שורה כאן -->
-  <script src="js/apps/whatsapp.js?v=3"></script>
-  <script src="js/apps/youtube.js?v=3"></script>
-  <script src="js/apps/music.js?v=3"></script>
-  <script src="js/apps/contacts.js?v=3"></script>
-  <script src="js/apps/google.js?v=3"></script>
-  <script src="js/apps/notes.js?v=3"></script>
-  <script src="js/apps/photos.js?v=3"></script>
-  <script src="js/apps/flappy.js?v=3"></script>
-  <script src="js/apps/snake.js?v=3"></script>
-  <script src="js/apps/tony.js?v=3"></script>
+  <script src="js/apps/whatsapp.js?v=4"></script>
+  <script src="js/apps/youtube.js?v=4"></script>
+  <script src="js/apps/music.js?v=4"></script>
+  <script src="js/apps/contacts.js?v=4"></script>
+  <script src="js/apps/google.js?v=4"></script>
+  <script src="js/apps/notes.js?v=4"></script>
+  <script src="js/apps/photos.js?v=4"></script>
+  <script src="js/apps/flappy.js?v=4"></script>
+  <script src="js/apps/snake.js?v=4"></script>
   <script>
     Phone.start();
     // אם יצאה גרסה חדשה של האתר — טוענים אותה מיד (במקום לחכות שהזיכרון של הדפדפן יתרוקן)
-    const SITE_VERSION = '3';
+    const SITE_VERSION = '4';
     fetch('version.txt?t=' + Date.now(), { cache: 'no-store' })
       .then(r => r.text())
       .then(v => {
